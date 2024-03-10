@@ -1,0 +1,39 @@
+{% extends "layout.twig" %}
+
+{% block nav %}
+    <nav>
+        <ul class="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <h1>Registra un nuevo usuario</h1>
+
+    {% if cookie is not null %}
+        <div class="blogger-notice">Usuario creado con éxito.</div>
+    {% endif %}
+		<form action="register" method="post" enctype="multipart/form-data">
+			<label for="title">User:</label><br>
+			<input type="text" id="user" name="user"><br>
+			<label for="Email">Email:</label><br>
+			<input type="text" id="email" name="email"><br>
+			<label for="Password">Password:</label><br>
+			<input type="password" id="password" name="password"><br>
+			<label for="Profile">Profile:</label><br>
+			<input type="text" id="profile" name="profile"><br>
+
+			<input type="submit" value="Submit">
+		</form>
+	</body>
+</html>
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.twig" %}
+{% endblock %}

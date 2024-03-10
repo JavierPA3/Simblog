@@ -1,0 +1,43 @@
+{% extends "layout.twig" %}
+
+{% block nav %}
+    <nav>
+        <ul class="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            {% if profile == "Invitado" %}
+                <li><a href="/login">Login</a></li>
+            {% else %}
+                <li><a href="/contactos">Contactos</a></li>
+                <li><a href="/admin">Admin</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <h1>Crea un blog</h1>
+
+    {% if cookie is not null %}
+        <div class="blogger-notice">Blog creado con éxito.</div>
+    {% endif %}
+
+        <form action="blogs" method="post" enctype="multipart/form-data">
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title"><br>
+            <label for="author">Author:</label><br>
+            <input type="text" id="author" name="author"><br>
+            <label for="blog">Blog:</label><br>
+            <textarea id="blog" name="blog"></textarea><br>
+            <label for="image">Image:</label><br>
+            <input type="file" id="image" name="image"><br>
+            <label for="tags">Tags:</label><br>
+            <input type="text" id="tags" name="tags"><br>
+            <input type="submit" value="Submit">
+        </form>
+ {% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.twig" %}
+{% endblock %}
